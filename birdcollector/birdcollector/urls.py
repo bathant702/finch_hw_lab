@@ -19,6 +19,6 @@ from django.urls import path, include #think router.
 
 urlpatterns = [
     path('admin/', admin.site.urls), #admin page
-    # '' represents the "starts with" path
     path('', include('main_app.urls')), #calling on the path from main_app.urls. think router
+            
 ]
