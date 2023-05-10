@@ -105,6 +105,8 @@ Follow the prompts and have a nice day
 Don't forget to register your models on the admin site.
         admin.site.register(<database name)
 
+Step 10 of django-models has solid advice for coding CRUD
+
 when applying a new feature (like a new CRUD), here is the process that makes sense to you.
         - if CRUD needs a specific HTML, create that HTML for it.
         - create the path() in <main_app>/url.py

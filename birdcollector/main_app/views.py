@@ -13,3 +13,9 @@ def birds_index(request):
     return render(request, 'birds/index.html', {
         'birds': birds #calling back the model using the value of birds in the function
     })
+
+def birds_detail(request, bird_id):
+    bird = Bird.objects.get(id=bird_id)# retrieves bird detail via id
+    return render(request, 'birds/detail.html', { #function calling page
+        'bird': bird #calling back the model using the value of birds in the function
+    })

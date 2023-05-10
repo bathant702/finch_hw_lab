@@ -4,9 +4,7 @@
 
 <h1>Bird List</h1>
 
-{% for bird in birds %}
   <div class="card">
-    <a href="{% url 'details' bird.id %}">
     <div class="card-content">
       <span class="card-title">{{ bird.name }}</span>
       <p>Breed: {{ bird.breed }}</p>
@@ -17,8 +15,6 @@
         <p>Age: baby bird</p>
       {% endif %}
     </div>
-    </a>
   </div>
-{% endfor %}
 
 {% endblock %}
