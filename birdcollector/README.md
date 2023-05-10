@@ -35,10 +35,16 @@ Connect to project database:
                 }
         }
 
+Make migration files for a DB after its been created
+        python3 manage.py makemigrations
+How to show whats been migrated
+        python3 manage.py showmigration
 Migrate the the Pending Migration
         python3 manage.py migrate
 
-
+django to git thought
+makemigrations ==> add/commit
+migrate ==> push
 
 
 https://github.com/takis-fuego-cohort/lessons-and-labs/blob/main/Unit_3/3-django/3.1-intro-django.md
@@ -55,14 +61,12 @@ To run the app
 Creates an app (polls)
         python3 manage.py startapp polls
 
-To migrate changes
-        python3 manage.py migrate
 
 Allows you to play with the API
         python3 manage.py shell
 
-{% %} = confused acorn for value
-{{ }} = cross hairs for logic
+{% %} = confused acorn for logic
+{{ }} = cross hairs for values
 
 when updating a database, we need to make migrations, then do the migrations.
         python3 manage.py makemigrations
@@ -85,14 +89,19 @@ then
         <dbname>.objects.all()
                 it will bring up <QuerySet []>
 here is an example of data entry
-        c = Cat(name="Biscuit", breed='Sphinx', description='Evil looking cuddle monster. Hairless', age=2)
+        b = Bird(name="Tweetie", breed='canary', description='innocent yellow birdie', age=2)
+        keep in mind that this is really just a reflection of the information you put in the model.
+        using this is good for putting dummy data for a model. you can put data in the views, but eventually you'll need a better database management system. this would be the next step.
 use c.__dict__ to see the entry
 use c.id to give it an id
 use c.save() to save it
 
-if we're making routes to a new page:
-        1. create the html page for the route (if needed)
-        2. set the url path in <app name>/url.py
-        3. set the route in the <app name>/views.py
-        4. set the code in the html to be able to pull the data from model
-        5. test
+when applying a new feature (like a new CRUD), here is the process that makes sense to you.
+        - if CRUD needs a specific HTML, create that HTML for it.
+        - create the path() in <main_app>/url.py
+        - create the def (if function based) or class (if classed based) route in <main_app>/views.py
+        - test code by accessing route directly in html.
+        - on success of accessing route, go back to HTML and properly connect links for functionality.
+
+
+-- ended on Step 5 of https://github.com/takis-fuego-cohort/lessons-and-labs/blob/main/Unit_3/3-django/3.3-django-models.md
