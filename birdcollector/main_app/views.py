@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from .models import Bird
 
 # Create your views here.
@@ -14,10 +13,3 @@ def birds_index(request):
     return render(request, 'birds/index.html', {
         'birds': birds #calling back the model using the value of birds in the function
     })
-
-#dummy data for birds
-# birds = [
-#     {'name': 'Finchie', 'breed': 'finch', 'description': 'small, with white underbelly and gray wings. finished off with a black trim.', 'age': 2},
-#     {'name': 'Tweetie', 'breed': 'canary', 'description': 'yellow witha huge head', 'age': 1},
-#     {'name': 'Murica', 'breed': 'eagle', 'description': 'with the color of freedom on its great wings of freedom', 'age': 200},
-# ]

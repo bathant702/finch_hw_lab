@@ -92,9 +92,18 @@ here is an example of data entry
         b = Bird(name="Tweetie", breed='canary', description='innocent yellow birdie', age=2)
         keep in mind that this is really just a reflection of the information you put in the model.
         using this is good for putting dummy data for a model. you can put data in the views, but eventually you'll need a better database management system. this would be the next step.
-use c.__dict__ to see the entry
-use c.id to give it an id
-use c.save() to save it
+use <database letter> b.__dict__ to see the entry 
+use b.id to give it an id
+use b.save() to save it
+# there is a lot you can do in finding your data. look up <db name>.objects.<filter mod> to find more info.
+make sure when you're done, you import it in the <main_app>/views.py
+
+# creating an admin
+Follow the prompts and have a nice day
+        python3 manage.py createsuperuser
+        python3 manage.py changepassword <user_name>
+Don't forget to register your models on the admin site.
+        admin.site.register(<database name)
 
 when applying a new feature (like a new CRUD), here is the process that makes sense to you.
         - if CRUD needs a specific HTML, create that HTML for it.
