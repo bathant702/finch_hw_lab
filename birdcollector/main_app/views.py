@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bird
 
 # Create your views here.
@@ -10,6 +10,14 @@ class BirdCreate(CreateView):
     success_url = '/birds/{bird_id}' # <--- must specify an exact ID
     # Or..more fitting... you want to just redirect to the index page
     # success_url = '/birds'
+
+class BirdUpdate(UpdateView):
+    model = Bird
+    fields = ['breed', 'description', 'age'] #fields you can edit/update
+
+class BirdDelete(DeleteView):
+    model = Bird
+    success_url = '/birds'
 
 
 # function based requests
@@ -28,5 +36,5 @@ def birds_index(request):
 def birds_detail(request, bird_id):
     bird = Bird.objects.get(id=bird_id)# retrieves bird detail via id
     return render(request, 'birds/detail.html', { #function calling page
-        'bird': bird #calling back the model using the value of birds in the function
+        'bird': bird, #calling back the model using the value of birds in the function
     })
