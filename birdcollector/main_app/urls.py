@@ -9,5 +9,6 @@ urlpatterns = [
     path('birds/create/', views.BirdCreate.as_view(), name='birds_create'), # route to creat page
     path('birds/<int:pk>/update/', views.BirdUpdate.as_view(), name='birds_update'), #route to update
     path('birds/<int:pk>/delete/', views.BirdDelete.as_view(), name='birds_delete'), #route to delete
+    path('birds/<int:bird_id>/add_feeding/', views.add_feeding, name='add_feeding'), #route to add new feeding to feeding model
 
 ]

@@ -1,5 +1,6 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse #to redirect back to initial page
+from datetime import date #using a date check to figure out business logic
 
 MEALS = (
     ('B', 'Breakfast'),
@@ -17,6 +18,9 @@ class Bird(models.Model):
     def __str__(self):
         return self.name
     
+    def fed_for_today(self):
+        return self.feeding_set.filter(date=date.today()).count() >= len(MEALS) #using sql logic to figure out if the meals are >= what they should be
+    
     def get_absolute_url(self): #this takes advantage of implementing an Update route
         return reverse('detail', kwargs={'bird_id': self.id})
 
@@ -33,3 +37,6 @@ class Feeding(models.Model):
 
     def __str__(self):
         return f"{self.get_meal_display()} on {self.date}"
+    
+    class Meta: #arranging the dates for feeding
+        ordering = ['-date']
