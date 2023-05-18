@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Bird #calling from models.py
+from django.views.generic import ListView, DetailView
+from .models import Bird, Toy #calling from models.py
 from .forms import FeedingForm #calling from forms.py
 
 # Create your views here.
@@ -19,6 +20,24 @@ class BirdUpdate(UpdateView):
 class BirdDelete(DeleteView):
     model = Bird
     success_url = '/birds'
+
+class ToyList(ListView):
+  model = Toy
+
+class ToyDetail(DetailView):
+  model = Toy
+
+class ToyCreate(CreateView):
+  model = Toy
+  fields = '__all__'
+
+class ToyUpdate(UpdateView):
+  model = Toy
+  fields = ['name', 'color']
+
+class ToyDelete(DeleteView):
+  model = Toy
+  success_url = '/toys'
 
 
 # function based requests

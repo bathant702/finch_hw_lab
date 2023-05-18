@@ -116,4 +116,18 @@ when applying a new feature (like a new CRUD), here is the process that makes se
 
 Be keen on working the the main_app/url and main_app/views. these need to be aligned properly in order to call the html. you can create the html first and for testing, but without proper routes, server will crash.
 
--- on step 6 of https://github.com/takis-fuego-cohort/lessons-and-labs/blob/main/Unit_3/3-django/3.4-django-class-based-views.md
+
+useful sql commands
+psql - runs sql shell
+
+help -- general help
+\?   -- help with psql commands
+\h   -- help with SQL commands
+\l   -- Lists all databases
+\c   -- Connect to a database
+\d   -- List tables in database
+\q   -- exits psql
+q    -- exits a psql list or dialogue
+
+start on 3.5, complete to 3.6
+finish SQL HW
