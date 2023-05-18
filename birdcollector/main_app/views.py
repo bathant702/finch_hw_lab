@@ -55,10 +55,13 @@ def birds_index(request):
 
 def birds_detail(request, bird_id):
     bird = Bird.objects.get(id=bird_id)# retrieves bird detail via id
+    id_list = bird.toys.all().values_list('id')
+    toys_bird_doesnt_have = Toy.objects.exclude(id__in=id_list)
     feeding_form = FeedingForm #importing form up top
     return render(request, 'birds/detail.html', { #function calling page
         'bird': bird, #calling back the model using the value of birds in the function
         'feeding_form': feeding_form,
+        'toys': toys_bird_doesnt_have
     }) #this will end up being passed onto the detail.html
 
 def add_feeding(request, bird_id): #feeding "controller"
@@ -68,3 +71,11 @@ def add_feeding(request, bird_id): #feeding "controller"
         new_feeding.bird_id = bird_id
         new_feeding.save()
     return redirect('detail', bird_id=bird_id)
+
+def assoc_toy(request, bird_id, toy_id):
+  Bird.objects.get(id=bird_id).toys.add(toy_id)
+  return redirect('detail', bird_id=bird_id)
+
+def unassoc_toy(request, bird_id, toy_id):
+  Bird.objects.get(id=bird_id).toys.remove(toy_id)
+  return redirect('detail', bird_id=bird_id)
